@@ -59,7 +59,7 @@ form.addEventListener('submit', (e) => {
     const data = Object.fromEntries(formData.entries());
     console.log('Form Data:', data);
 });
-
+ 
 // Task 8: Add a change event listener to a select drop down that displays the selected value in a paragraph
 const select = document.getElementById('options');
 const selectedValue = document.getElementById('selectedValue');

@@ -1,0 +1,134 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px;
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+}
+
+.button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+.paragraph {
+    font-size: 18px;
+    color: #333;
+    margin-top: 10px;
+}
+
+h1 {
+    color: #333;
+    font-size: 24px;
+    margin-top: 20px;
+    transition: color 0.3s ease;
+}
+
+h1:hover {
+    color: #007BFF;
+}
+
+img {
+    width: 100%;
+    border-radius: 5px;
+    transition: opacity 0.3s ease;
+}
+
+.input-container {
+    margin: 20px 0;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.output-text {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #555;
+}
+
+.form-container {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.submit-button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.submit-button:hover {
+    background-color: #218838;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+ul li {
+    background: #f8f9fa;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+ul li:hover {
+    background-color: #e2e6ea;
+}
+
+.select-container {
+    margin-top: 20px;
+}
+
+.select-box {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-output {
+    margin-top: 20px;
+    background: #e9ecef;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+}

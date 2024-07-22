@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Document</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 30%;
+            width: 200px;
+            text-align: center;
+            border: 1px solid black;
+            padding: 20px;
+            margin: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        .button {
+            background: #007BFF;
+            color: white;
+            border: none;
+            outline: none;
+            padding: 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .button:hover {
+            background: #0056b3;
+        }
+        .paragraph {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        .input-container {
+            margin-top: 20px;
+        }
+        .input-field {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin-bottom: 10px;
+        }
+        .output-text {
+            font-size: 14px;
+            color: #333;
+        }
+        .form-container {
+            width: 200px;
+            text-align: center;
+            border: 1px solid black;
+            padding: 20px;
+            margin: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        .form-container ul {
+            padding: 0;
+            list-style-type: none;
+        }
+        .form-container li {
+            margin: 5px 0;
+        }
+        .form-container button {
+            background: #28a745;
+            color: white;
+            border: none;
+            outline: none;
+            padding: 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .form-container button:hover {
+            background: #218838;
+        }
+        .select-container {
+            margin-top: 10px;
+        }
+        .select-box {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="click-container">
+        <button class="button" id="change-text-button">Click Me To Change Text</button>
+        <p class="paragraph" id="text-paragraph">This is the original content of this paragraph</p>
+        <h1>Hover over me to change color</h1>
+    </div>
+    
+    <div class="container" id="img-container">
+        <h3>Hover over me to increase visibility</h3>
+        <img src="https://images.unsplash.com/photo-1717137389747-d1d4ced6abc8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwzfHx8ZW58MHx8fHx8" alt="Sample Image" style="width: 100%; border-radius: 5px;">
+    </div>
+
+    <div class="container" id="input-container">
+        <div class="input-container">
+            <input class="input-field" id="input-field1" type="text" placeholder="Type something...">
+            <p class="output-text" id="output1"></p>
+        </div>
+        <div class="input-container">
+            <input class="input-field" id="input-field2" type="text" placeholder="Type something...">
+            <p class="output-text" id="output2"></p>
+        </div>
+    </div>
+
+    <div class="form-container" id="form-container">
+        <form action="">
+            <input class="input-field" id="form-input" type="text" placeholder="Enter text...">
+            <button type="submit">Submit</button>
+            <ul>
+                <li>One</li>
+                <li>Two</li>
+                <li>Three</li>
+                <li>Four</li>
+            </ul>
+        </form>
+        <div class="select-container">
+            <select class="select-box" id="select-box">
+                <option value="opt1">Option 1</option>
+                <option value="opt2">Option 2</option>
+                <option value="opt3">Option 3</option>
+                <option value="opt4">Option 4</option>
+            </select>
+        </div>
+    </div>
+</body>
+</html>

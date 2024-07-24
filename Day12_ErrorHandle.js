@@ -144,23 +144,68 @@ Log messages in the try, catch and finally block to observe the execution flow*/
 
 //Task 7: Use try-catch within async function to handle errors from a promise that randomly resolves or rejects, and log the error message
 
-function asyncErrorHandling(num){
-    return new Promise((res, rej) => {
-       if(num> 15){
-        res(`Valid number`)
-       } else {
-        rej(new Error("Invalid"))
-       }
-    })
+// function asyncErrorHandling(num){
+//     return new Promise((res, rej) => {
+//        if(num> 15){
+//         res(`Valid number`)
+//        } else {
+//         rej(new Error("Invalid"))
+//        }
+//     })
+// }
+
+// async function callingAsync () {
+//    try {
+//     const response = await asyncErrorHandling(12)
+//     console.log(response);
+//    } catch (error) {
+//         console.log(error.message);
+//    }
+// }
+
+// callingAsync()
+
+//Activity 5: Error Handling in Fetch
+
+//Task 8: Use the fetch API to request data from an invalid URL and handle the error using catch().
+//Log an appropriate error message to the console
+
+// const Url = 'https://www.google.com/invalid-endpoint'
+
+// function fetching(){
+//    fetch(Url)
+//     .then(response => {
+//         if(!response.ok){
+//             throw new Error(`Invalid network Response`)
+//         } 
+//         return response.json()
+//     })
+//     .then(data => {
+//         console.log(`Successfully fetched the data`, data);
+//     })
+//     .catch(error => {
+//         console.error(`Fetch Error:`, error.message);
+//     })
+// }
+
+// fetching()
+
+//Task 9: Use the fetch API to request data from an invalid URL within an async function and handle the error using try-catch.
+//Log appropriate error message
+
+const url = 'https://www.google.com/invalid-endpoint'
+
+async function asyncCatchError() {
+    try {
+        const response = await fetch(url)
+        if(!response.ok){
+            throw new Error(`Invalid Network Request`)
+        }
+        const data = await response.json()
+        console.log(`Fetched Data:`, data);
+    } catch (error) {
+        console.error(`Fetch Error:`, error.message);
+    }
 }
 
-async function callingAsync () {
-   try {
-    const response = await asyncErrorHandling(12)
-    console.log(response);
-   } catch (error) {
-        console.log(error.message);
-   }
-}
-
-callingAsync()
+asyncCatchError()

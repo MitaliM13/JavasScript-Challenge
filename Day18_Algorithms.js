@@ -96,20 +96,103 @@ function linearSearch(arr, target){
 
 //Task 5: Binary search to find the target value in a sorted array. Log the index
 
-function binarySearch(arr, target, low = 0, high = arr.length - 1){
-    if(low>high) return -1
-    let mid = Math.floor((low + high)/2)
+// function binarySearch(arr, target, low = 0, high = arr.length - 1){
+//     if(low>high) return -1
+//     let mid = Math.floor((low + high)/2)
 
-    if(arr[mid] === target){
-        return mid
-    } else if (arr[mid] < target){
-        return binarySearch(arr, target,mid +1 ,high)
-    } else {
-        return binarySearch(arr, target, low, mid -1)
+//     if(arr[mid] === target){
+//         return mid
+//     } else if (arr[mid] < target){
+//         return binarySearch(arr, target,mid +1 ,high)
+//     } else {
+//         return binarySearch(arr, target, low, mid -1)
+//     }
+// }
+
+// const arr = [1,2,3,4,5]
+// const target = 5
+// const index = binarySearch(arr, target)
+// console.log(index);
+
+//Activity 3: String algorithm
+//Task 6: Write a function to count the occurence of each character in a string. Log the character count
+
+function characterCount(str){
+    let count = {}
+    for(let i = 0; i<str.length; i++){
+        let char = str[i]
+        count[char] = (count[char] || 0) + 1
     }
+    return count
 }
 
-const arr = [1,2,3,4,5]
-const target = 5
-const index = binarySearch(arr, target)
-console.log(index);
+let character = characterCount("Hello")
+let character2 = characterCount("aksadhaksdhwfvbsdftyg")
+// console.log(character);
+// console.log(character2);
+
+//Task 7: Write a function to find the longest substring without repeating characters in the string.log the length of the string
+
+function longestSubstring(str){
+    let charIndex = new Map()
+    let longestLen = 0
+    let start = 0
+
+    for(let end = 0; end < str.length; end++){
+        let char = str[end]
+
+        if(charIndex.has(char)){
+            start = Math.max(start, charIndex.get(char) + 1)
+        }
+
+        charIndex.set(char, end)
+        longestLen = Math.max(longestLen, end - start + 1)
+    }
+    return longestLen
+}
+
+let substring = longestSubstring("asihdaskjdba")
+// console.log(substring);
+
+//Activity 4: Array Algorithms
+//Task 8: Write a function to rotate an array by k positions. Log the rotated array
+
+function rotateByK(arr, k){
+    let n = arr.length
+    k = k % n
+    return arr.slice(-k).concat(arr.slice(0, -k))
+}
+
+let rotatedArray = rotateByK([1,2,3,4,5,6,7], 4)
+let rotatedArray2 = rotateByK([1,2,3,4,5,6,7], 1)
+// console.log(rotatedArray);
+// console.log(rotatedArray2);
+
+//Task 9: Write a function to merge to sorted arrays into one sorted array. Log the merged array
+
+function mergeArrays(arr1, arr2){
+    let arr = []
+    let i = 0, j = 0
+    
+    while(i<arr1.length && j<arr2.length){
+        if(arr1[i]<arr2[j]){
+            arr.push(arr1[i])
+            i++
+        } else {
+            arr.push(arr2[j])
+            j++
+        }
+    }
+    while(i<arr1.length){
+        arr.push(arr1[i])
+        i++
+    }
+    while(j<arr2.length){
+        arr.push(arr2[j])
+        j++
+    }
+    return arr
+}
+
+let mergeArray = mergeArrays([1,3,5,7], [2,4,6,8])
+console.log(mergeArray);

@@ -1,60 +1,58 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const button = document.getElementById('search-btn')
+    const searchBtn = document.getElementById('search-btn');
+    const inputBox = document.getElementById('input-box');
+    const dataContainer = document.getElementById('data');
+    const container = document.querySelector('.container');
 
-    button.addEventListener('click', () => {
-        const city = document.getElementById('input-box').value.trim()
+    const createCardElement = (tagName, textContent, className = '') => {
+        const element = document.createElement(tagName);
+        element.textContent = textContent;
+        if (className) element.className = className;
+        return element;
+    };
 
-        if(city){
-            const weatherAPI = `https://goweather.herokuapp.com/weather/${city}`;
-            
-            fetch(weatherAPI)
-                .then(response => {
-                    if(!response.ok){
-                        throw new Error(`Error fetching the data ${response.status} ${response.statusText}`)
-                    }
-                    return response.json()
-                })
-                .then(data => {
-                    const para = document.getElementById('data')
-                    para.innerHTML = ''
+    const displayWeatherData = (city, data) => {
+        dataContainer.innerHTML = '';
 
-                    const card = document.createElement('div')
-                    card.className = 'card'
+        const card = createCardElement('div', '', 'card');
+        card.appendChild(createCardElement('h2', `Weather in ${city}`));
+        card.appendChild(createCardElement('p', `Temperature: ${data.temperature}`));
+        card.appendChild(createCardElement('p', `Wind speed: ${data.wind}`));
+        card.appendChild(createCardElement('p', `Weather description: ${data.description}`));
 
-                    const cityName = document.createElement('h2');
-                    cityName.textContent = `Weather in ${city}`;
-                    card.appendChild(cityName);
+        const forecastTitle = createCardElement('h3', 'Daily Weather Forecast');
+        card.appendChild(forecastTitle);
 
-                    const temp = document.createElement('p');
-                    temp.textContent = `Temperature: ${data.temperature}`;
-                    card.appendChild(temp);
+        data.forecast.forEach((day, index) => {
+            const forecast = createCardElement('p', `Day ${index + 1} - Temperature: ${day.temperature}, Wind: ${day.wind}`);
+            card.appendChild(forecast);
+        });
 
-                    const wind = document.createElement('p');
-                    wind.textContent = `Wind speed: ${data.wind}`;
-                    card.appendChild(wind);
+        dataContainer.appendChild(card);
+        container.style.height = 'auto';
+        container.style.padding = "10px";
+    };
 
-                    const describe = document.createElement('p');
-                    describe.textContent = `Weather description: ${data.description}`;
-                    card.appendChild(describe);
-
-                    const forecastTitle = document.createElement('h3')
-                    forecastTitle.textContent = `Daily Weather Forecast`
-                    card.appendChild(forecastTitle)
-
-                    data.forecast.forEach((day, index) => {
-                        const forecast = document.createElement('p')
-                        forecast.textContent = `Day ${index + 1} - Temperature: ${day.temperature}, Wind: ${day.wind}`
-                        card.appendChild(forecast)
-                    })
-
-                    para.appendChild(card);
-                })
-                .catch(err => {
-                    console.error(`Error` ,err);
-                })
+    const fetchWeatherData = async (city) => {
+        try {
+            const response = await fetch(`https://goweather.herokuapp.com/weather/${city}`);
+            if (!response.ok) {
+                throw new Error(`Error fetching data: ${response.status} ${response.statusText}`);
+            }
+            const data = await response.json();
+            displayWeatherData(city, data);
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Failed to fetch weather data. Please try again.');
         }
-        else {
-            alert('Enter a city name')
+    };
+
+    searchBtn.addEventListener('click', () => {
+        const city = inputBox.value.trim();
+        if (city) {
+            fetchWeatherData(city);
+        } else {
+            alert('Please enter a city name.');
         }
-    })
-})
+    });
+});

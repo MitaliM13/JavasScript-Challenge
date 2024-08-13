@@ -18,16 +18,18 @@
 
         <form id="update-form">
             <h3>Update Profile Information</h3>
-
-            <label for="new-name">Name</label>
-            <input type="text" id="new-name" name="new-name">
-
-            <label for="new-email">Email</label>
-            <input type="email" id="new-email" name="new-email">
-
-            <label for="new-pic">Profile Picture</label>
-            <input type="file" id="new-pic" name="new-pic">
-
+            <div class="form-group">
+                <label for="new-name">Name</label>
+                <input type="text" id="new-name" name="new-name" placeholder="New name">
+            </div>
+            <div class="form-group">
+                <label for="new-email">Email</label>
+                <input type="email" id="new-email" name="new-email" placeholder="New email">
+            </div>
+            <div class="form-group">
+                <label for="new-pic">Profile Picture</label>
+                <input type="file" id="new-pic" name="new-pic">
+            </div>
             <button type="submit">Update Profile</button>
         </form>
     </div>

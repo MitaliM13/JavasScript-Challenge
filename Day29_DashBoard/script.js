@@ -1,57 +1,48 @@
-document.querySelector('.post-form').addEventListener('submit', (e) => {
-    e.preventDefault();
+document.addEventListener('DOMContentLoaded', () => {
+    const postForm = document.querySelector('.post-form');
+    const postContainer = document.querySelector('.post-container');
 
-    const title = document.getElementById('post-title').value;
-    const details = document.getElementById('post-details').value;
-    const username = document.getElementById('user-name').value;
-    const email = document.getElementById('user-email').value;
+    postForm.addEventListener('submit', function(event) {
+        event.preventDefault();
 
-    // Store user information in localStorage
-    if (username && email) {
-        localStorage.setItem('username', username);
-        localStorage.setItem('email', email);
+        const title = document.querySelector('#post-title').value;
+        const details = document.querySelector('#post-details').value;
+        const userName = document.querySelector('#user-name').value;
+        const userEmail = document.querySelector('#user-email').value;
+
+        if (title && details && userName && userEmail) {
+            const newPost = createPostElement(title, details, userName);
+            postContainer.prepend(newPost);
+            postForm.reset();
+        }
+    });
+
+    function createPostElement(title, details, userName) {
+        const postElement = document.createElement('div');
+        postElement.classList.add('post');
+
+        postElement.innerHTML = `
+            <div class="post-header">
+                <img class="user-image" src="default-pic.jpg" alt="User Image">
+                <div>
+                    <h4 class="username">${userName}</h4>
+                    <p class="timestamp">${new Date().toLocaleString()}</p>
+                </div>
+            </div>
+            <div class="post-text">
+                <h4>${title}</h4>
+                <p>${details}</p>
+            </div>
+            <div class="post-actions">
+                <button class="like-button">Like</button><span class="like-count">0 Likes</span>
+                <button class="comment-button">Comment</button><span class="comment-count">0 Comments</span>
+            </div>
+        `;
+
+        return postElement;
     }
-
-    // Handle adding a new post
-    if (title && details) {
-        const postContainer = document.querySelector('.post-container');
-        const newPost = document.createElement('div');
-        newPost.classList.add('post');
-        newPost.innerHTML = `<h4>${title}</h4><p>${details}</p>`;
-        postContainer.appendChild(newPost);
-
-        document.getElementById('post-title').value = '';
-        document.getElementById('post-details').value = '';
-    }
-
-    // Handle updating the user information sidebar
-    if (username && email) {
-        const userContainer = document.querySelector('.sidebar');
-        const userInfo = document.createElement('div');
-        userInfo.classList.add('user-info');
-        userInfo.innerHTML = `<h4>Name: ${username}</h4><p>Email: ${email}</p>`;
-        userContainer.appendChild(userInfo);
-
-        document.getElementById('user-name').value = '';
-        document.getElementById('user-email').value = '';
-    }
-});
-
-// Go to profile page
-document.getElementById('profile-page-button').addEventListener('click', () => {
-    window.location.href = 'profile.html';
-});
-
-// Load user information from localStorage when the page loads
-window.addEventListener('load', () => {
-    const storedName = localStorage.getItem('username');
-    const storedEmail = localStorage.getItem('email');
-
-    if (storedName && storedEmail) {
-        const userContainer = document.querySelector('.sidebar');
-        const userInfo = document.createElement('div');
-        userInfo.classList.add('user-info');
-        userInfo.innerHTML = `<h4>Name: ${storedName}</h4><p>Email: ${storedEmail}</p>`;
-        userContainer.appendChild(userInfo);
-    }
+    
+    document.getElementById('profile-page-button').addEventListener('click', () => {
+        window.location.href = 'profile.html';
+    });
 });

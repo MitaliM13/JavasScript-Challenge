@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Media</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" id="loginBtn">Login</a></li>
+                <li><a href="#">Post</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Popup Login Form -->
+    <div id="loginPopup" class="popup">
+        <div class="popup-content">
+            <span class="close">&times;</span>
+            <h2>Login</h2>
+            <form id="loginForm">
+                <label for="username">Username:</label>
+                <input type="text" id="username" placeholder="Enter your username" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" placeholder="Enter your password" required>
+
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <main>
+        <div class="container">
+            <div class="posts-cont"></div>
+            <form id="form">
+                <form id="form">
+                    <label for="title">Title:</label>
+                    <input type="text" id="title" placeholder="What's on your mind" required>
+                
+                    <label for="post">Post:</label>
+                    <textarea id="post" placeholder="Write something" rows="5" required></textarea>
+                
+                    <label for="image">Upload Image:</label>
+                    <input type="file" id="image" accept="image/*">
+                
+                    <button type="submit">Post</button>
+                </form>
+                
+            </form>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
